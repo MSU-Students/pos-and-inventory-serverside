@@ -1,12 +1,15 @@
+import { UsersDto } from './entities/users.dto';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SupplierDto } from './entities/supplier.dto';
 import { SupplierController } from './supplier/supplier.controller';
 import { SupplierService } from './supplier/supplier.service';
+import { UsersController } from './users/users.controller';
+import { UsersService } from './users/users.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([SupplierDto]),
+    TypeOrmModule.forFeature([SupplierDto, UsersDto]),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -14,12 +17,12 @@ import { SupplierService } from './supplier/supplier.service';
       username: 'root',
       password: 'root',
       database: 'pos_and_inventorydb',
-      entities: [SupplierDto],
+      entities: [SupplierDto, UsersDto],
       synchronize: true,
       dropSchema: true,
     }),
   ],
-  controllers: [SupplierController],
-  providers: [SupplierService],
+  controllers: [SupplierController, UsersController],
+  providers: [SupplierService, UsersService],
 })
 export class AppModule {}
