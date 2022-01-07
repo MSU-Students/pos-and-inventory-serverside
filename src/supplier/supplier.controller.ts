@@ -7,35 +7,60 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ApiResponse } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOperation,
+  ApiResponse,
+} from '@nestjs/swagger';
 import { SupplierDto } from '../entities/supplier.dto';
 import { SupplierService } from './supplier.service';
 
 @Controller('supplier')
 export class SupplierController {
-  constructor(private service: SupplierService) {}
-  @ApiResponse({ type: SupplierDto })
+  constructor(private supplierService: SupplierService) {}
+
+  @ApiBody({ type: SupplierDto })
+  @ApiOperation({
+    summary: 'Add new supplier',
+    operationId: 'AddSupplier',
+  })
+  @ApiResponse({ status: 200, type: SupplierDto })
   @Post()
-  create(@Body() newSupplier: SupplierDto): Promise<SupplierDto> {
-    return this.service.create(newSupplier);
+  async create(@Body() job: SupplierDto): Promise<SupplierDto> {
+    return this.supplierService.create(job);
   }
-  @Get(':id')
-  findOne(@Param('id') myId: string): Promise<SupplierDto> {
-    throw 'Not Implemented';
-  }
-  @Put(':id')
-  update(
-    @Param('id') myId: string,
-    @Body() newSupplier: SupplierDto,
-  ): Promise<SupplierDto> {
-    throw 'Not Implemented';
-  }
+
+  @ApiOperation({ summary: 'Get all supplier', operationId: 'GetSuppliers' })
+  @ApiResponse({ status: 200, type: SupplierDto })
   @Get()
-  findAll(): Promise<SupplierDto[]> {
-    throw 'Not Implemented';
+  async findAll(): Promise<SupplierDto[]> {
+    return this.supplierService.findAll();
   }
-  @Delete(':id')
-  remove(@Param('id') id: string): Promise<SupplierDto> {
-    throw 'Not Implemented';
+
+  @ApiOperation({ summary: 'Get supplier by id', operationId: 'GetSupplier' })
+  @ApiResponse({ status: 200, type: SupplierDto })
+  @Get(':supplierID')
+  async findOne(@Param('supplierID') id: number): Promise<SupplierDto> {
+    return this.supplierService.findOne(id);
+  }
+  @ApiOperation({
+    summary: 'Update supplier by id',
+    operationId: 'UpdateSupplier',
+  })
+  @ApiResponse({ status: 200, type: SupplierDto })
+  @Put(':supplierID')
+  async update(@Param('supplierID') id: number, @Body() job: SupplierDto) {
+    return this.supplierService.update(id, job);
+  }
+
+  @ApiOperation({
+    summary: 'Delete supplier by id',
+    operationId: 'DeleteSupplier',
+  })
+  @ApiResponse({ status: 200, type: SupplierDto })
+  @Delete(':supplierID')
+  async delete(@Param('supplierID') id: number) {
+    return this.supplierService.deleteOne(id);
   }
 }

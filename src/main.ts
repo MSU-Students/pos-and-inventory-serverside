@@ -5,13 +5,13 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('BesTea POS and Inventory')
+    .setDescription('The POS and Inventory API')
     .setVersion('1.0')
-    .addTag('cats')
+    .addTag('pos-and-inventory')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('pos-inventory-api', app, document);
   await app.listen(3000);
 }
 bootstrap();
