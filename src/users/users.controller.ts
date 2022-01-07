@@ -22,8 +22,8 @@ export class UsersController {
 
   @ApiBody({ type: UsersDto })
   @ApiOperation({
-    summary: 'Add new supplier',
-    operationId: 'AddSupplier',
+    summary: 'Add new Users',
+    operationId: 'AddUsers',
   })
   @ApiResponse({ status: 200, type: UsersDto })
   @Post()
@@ -31,22 +31,22 @@ export class UsersController {
     return this.usersService.create(job);
   }
 
-  @ApiOperation({ summary: 'Get all supplier', operationId: 'GetSuppliers' })
+  @ApiOperation({ summary: 'Get all Users', operationId: 'GetUserss' })
   @ApiResponse({ status: 200, type: UsersDto })
   @Get()
   async findAll(): Promise<UsersDto[]> {
     return this.usersService.findAll();
   }
 
-  @ApiOperation({ summary: 'Get supplier by id', operationId: 'GetSupplier' })
+  @ApiOperation({ summary: 'Get Users by id', operationId: 'GetUsers' })
   @ApiResponse({ status: 200, type: UsersDto })
   @Get(':userID')
   async findOne(@Param('userID') id: number): Promise<UsersDto> {
     return this.usersService.findOne(id);
   }
   @ApiOperation({
-    summary: 'Update supplier by id',
-    operationId: 'UpdateSupplier',
+    summary: 'Update Users by id',
+    operationId: 'UpdateUsers',
   })
   @ApiResponse({ status: 200, type: UsersDto })
   @Put(':userID')
@@ -55,8 +55,8 @@ export class UsersController {
   }
 
   @ApiOperation({
-    summary: 'Delete supplier by id',
-    operationId: 'DeleteSupplier',
+    summary: 'Delete Users by id',
+    operationId: 'DeleteUsers',
   })
   @ApiResponse({ status: 200, type: UsersDto })
   @Delete(':userID')
