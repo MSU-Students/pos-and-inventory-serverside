@@ -1,5 +1,6 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
@@ -33,7 +34,6 @@ export class InventoryDto implements Inventory {
   @Column({ length: 100 })
   itemExpiryDate: string;
 
-  @ApiProperty({ example: '02/16/2022' })
-  @Column({ length: 100 })
-  itemDateCreated: string;
+  @CreateDateColumn('')
+  itemDateCreated: Date;
 }
