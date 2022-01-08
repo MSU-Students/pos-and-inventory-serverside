@@ -5,5 +5,5 @@ export interface Inventory {
   itemUnitProd: string;
   itemCategory: string;
   itemExpiryDate: string;
-  itemDateCreated: string;
+  itemDateCreated: Date;
 }

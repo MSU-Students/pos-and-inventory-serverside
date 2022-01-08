@@ -40,8 +40,8 @@ export class InventoryController {
 
   @ApiOperation({ summary: 'Get Inventory by id', operationId: 'GetInventory' })
   @ApiResponse({ status: 200, type: InventoryDto })
-  @Get(':userID')
-  async findOne(@Param('userID') id: string): Promise<InventoryDto> {
+  @Get(':itemCode')
+  async findOne(@Param('itemCode') id: string): Promise<InventoryDto> {
     return this.inventoryService.findOne(id);
   }
   @ApiOperation({
@@ -49,8 +49,8 @@ export class InventoryController {
     operationId: 'UpdateInventory',
   })
   @ApiResponse({ status: 200, type: InventoryDto })
-  @Put(':userID')
-  async update(@Param('userID') id: string, @Body() job: InventoryDto) {
+  @Put(':itemCode')
+  async update(@Param('itemCode') id: string, @Body() job: InventoryDto) {
     return this.inventoryService.update(id, job);
   }
 
@@ -59,8 +59,8 @@ export class InventoryController {
     operationId: 'DeleteInventory',
   })
   @ApiResponse({ status: 200, type: InventoryDto })
-  @Delete(':userID')
-  async delete(@Param('userID') id: string) {
+  @Delete(':itemCode')
+  async delete(@Param('itemCode') id: string) {
     return this.inventoryService.deleteOne(id);
   }
 }
