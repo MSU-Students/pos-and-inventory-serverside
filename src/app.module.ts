@@ -24,6 +24,18 @@ import { SubprodCategoryController } from './category/subprod-category/subprod-c
 import { SubprodCategoryDto } from './category/subprod-category/subprod-category.dto';
 import { ExpensesCategoryService } from './category/expenses-category/expenses-category.service';
 import { ExpensesCategoryController } from './category/expenses-category/expenses-category.controller';
+import { ProductSizeService } from './product-size/product-size.service';
+import { ProductSizeController } from './product-size/product-size.controller';
+import { ProductSizeDto } from './entities/product-size.dto';
+import { ExpensesService } from './expenses/expenses.service';
+import { ExpensesController } from './expenses/expenses.controller';
+import { ExpensesDto } from './entities/expenses.dto';
+import { PurchaseDto } from './entities/purchase.dto';
+import { PurchaseService } from './purchase/purchase.service';
+import { PurchaseController } from './purchase/purchase.controller';
+import { SellRecordService } from './sell-record/sell-record.service';
+import { SellRecordController } from './sell-record/sell-record.controller';
+import { SellRecordDto } from './entities/sell-record.dto';
 @Module({
   imports: [
     TypeOrmModule.forFeature([
@@ -35,6 +47,11 @@ import { ExpensesCategoryController } from './category/expenses-category/expense
       ProdCategoryDto,
       SubprodCategoryDto,
       ExpensesCategoryDto,
+      ProdCategoryDto,
+      ProductSizeDto,
+      ExpensesDto,
+      PurchaseDto,
+      SellRecordDto,
     ]),
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -53,6 +70,10 @@ import { ExpensesCategoryController } from './category/expenses-category/expense
         SubprodCategoryDto,
         ExpensesCategoryDto,
         SubprodCategoryDto,
+        ProductSizeDto,
+        ExpensesDto,
+        PurchaseDto,
+        SellRecordDto,
       ],
       synchronize: true,
       dropSchema: true,
@@ -67,6 +88,10 @@ import { ExpensesCategoryController } from './category/expenses-category/expense
     ProdCategoryController,
     SubprodCategoryController,
     ExpensesCategoryController,
+    ProductSizeController,
+    ExpensesController,
+    PurchaseController,
+    SellRecordController,
   ],
   providers: [
     SupplierService,
@@ -77,6 +102,10 @@ import { ExpensesCategoryController } from './category/expenses-category/expense
     ProdCategoryService,
     SubprodCategoryService,
     ExpensesCategoryService,
+    ProductSizeService,
+    ExpensesService,
+    PurchaseService,
+    SellRecordService,
   ],
 })
 export class AppModule {}

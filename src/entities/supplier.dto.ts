@@ -11,7 +11,7 @@ import {
 @Entity('Supplier')
 export class SupplierDto implements Supplier {
   @PrimaryGeneratedColumn()
-  supplierID?: number;
+  supplierID: number;
 
   @ApiProperty({ example: 'Basam C. Serad' })
   @Column({ length: 100 })
