@@ -3,14 +3,11 @@ import { ProdCategoryDto } from './category/prod-category/prod-category.dto';
 import { InventoryCategoryDto } from './category/inventory-category/inventory-category.dto';
 import { ManageProductDto } from './entities/manage-product.dto';
 import { InventoryDto } from './entities/inventory.dto';
-import { UsersDto } from './entities/users.dto';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SupplierDto } from './entities/supplier.dto';
 import { SupplierController } from './supplier/supplier.controller';
 import { SupplierService } from './supplier/supplier.service';
-import { UsersController } from './users/users.controller';
-import { UsersService } from './users/users.service';
 import { ManageProductController } from './manage-product/manage-product.controller';
 import { ManageProductService } from './manage-product/manage-product.service';
 import { InventoryController } from './inventory/inventory.controller';
@@ -36,11 +33,13 @@ import { PurchaseController } from './purchase/purchase.controller';
 import { SellRecordService } from './sell-record/sell-record.service';
 import { SellRecordController } from './sell-record/sell-record.controller';
 import { SellRecordDto } from './entities/sell-record.dto';
+import { AuthModule } from './user/auth.module';
+import { UserDto, UserController, UserService } from './user';
 @Module({
   imports: [
     TypeOrmModule.forFeature([
+      UserDto,
       SupplierDto,
-      UsersDto,
       InventoryDto,
       ManageProductDto,
       InventoryCategoryDto,
@@ -62,7 +61,6 @@ import { SellRecordDto } from './entities/sell-record.dto';
       database: 'pos_and_inventorydb',
       entities: [
         SupplierDto,
-        UsersDto,
         InventoryDto,
         ManageProductDto,
         InventoryCategoryDto,
@@ -74,14 +72,16 @@ import { SellRecordDto } from './entities/sell-record.dto';
         ExpensesDto,
         PurchaseDto,
         SellRecordDto,
+        UserDto,
       ],
       synchronize: true,
       dropSchema: true,
     }),
+    AuthModule,
   ],
   controllers: [
     SupplierController,
-    UsersController,
+    UserController,
     ManageProductController,
     InventoryController,
     InventoryCategoryController,
@@ -95,7 +95,7 @@ import { SellRecordDto } from './entities/sell-record.dto';
   ],
   providers: [
     SupplierService,
-    UsersService,
+    UserService,
     ManageProductService,
     InventoryService,
     InventoryCategoryService,

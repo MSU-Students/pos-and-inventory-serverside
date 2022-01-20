@@ -1,4 +1,4 @@
 export interface ProdCategory {
-  prodCategoryID?: number;
+  Id?: number;
   prodCategoryName: string;
 }

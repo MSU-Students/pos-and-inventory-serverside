@@ -3,10 +3,11 @@ import {
   Column,
   Entity,
   JoinColumn,
-  ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Expenses } from '../interfaces/expenses.interface';
+import { ExpensesCategoryDto } from '../category/expenses-category/expenses-category.dto';
 
 @Entity('Expenses')
 export class ExpensesDto implements Expenses {
@@ -32,4 +33,8 @@ export class ExpensesDto implements Expenses {
   @ApiProperty({ example: 'sa' })
   @Column({ length: 100 })
   type: string;
+
+  @OneToOne(() => ExpensesCategoryDto)
+  @JoinColumn({ name: 'expensesCatId' })
+  expensesCategory: ExpensesCategoryDto;
 }

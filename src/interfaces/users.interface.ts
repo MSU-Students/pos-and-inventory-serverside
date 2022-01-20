@@ -1,12 +1,12 @@
 export interface Users {
-  usertID?: string;
+  id?: number;
   FName: string;
-  MName: string;
+  MName?: string;
   LName: string;
-  username: string;
-  password: string;
-  email: string;
-  role: 'Admin' | 'Cashier';
-  dateCreated: string;
-  status: 'Active' | 'Inactive' | 'Banned';
+  username?: string;
+  password?: string;
+  type?: 'admin' | 'cashier';
+  contact?: string;
+  email?: string;
+  status: 'active' | 'inactive';
 }

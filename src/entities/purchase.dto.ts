@@ -5,9 +5,11 @@ import {
   Entity,
   JoinColumn,
   ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Purchase } from '../interfaces/purchase.interface';
+import { SupplierDto } from '../entities/supplier.dto';
 
 @Entity('Purchase')
 export class PurchaseDto implements Purchase {
@@ -32,4 +34,8 @@ export class PurchaseDto implements Purchase {
   @ApiProperty({ example: '7000' })
   @Column()
   purchaseAmount: number;
+
+  @OneToOne(() => SupplierDto)
+  @JoinColumn({ name: 'supplierId' })
+  supplier: SupplierDto;
 }
