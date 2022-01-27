@@ -23,16 +23,12 @@ export class ExpensesDto implements Expenses {
   date: string;
 
   @ApiProperty({ example: 'Payment for the elec bilss' })
-  @Column({ length: 100 })
+  @Column({ length: 100, nullable: true })
   description: string;
 
   @ApiProperty({ example: '7000' })
   @Column()
   amount: number;
-
-  @ApiProperty({ example: 'sa' })
-  @Column({ length: 100 })
-  type: string;
 
   @OneToOne(() => ExpensesCategoryDto)
   @JoinColumn({ name: 'expensesCatId' })

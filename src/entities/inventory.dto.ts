@@ -3,7 +3,6 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
-  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -29,7 +28,7 @@ export class InventoryDto implements Inventory {
   itemUnitProd: string;
 
   @ApiProperty({ example: '02/16/2023' })
-  @Column({ length: 100 })
+  @Column({ length: 100, nullable: true })
   itemExpiryDate: string;
 
   @CreateDateColumn('')

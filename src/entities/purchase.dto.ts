@@ -4,7 +4,6 @@ import {
   CreateDateColumn,
   Entity,
   JoinColumn,
-  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -15,10 +14,6 @@ import { SupplierDto } from '../entities/supplier.dto';
 export class PurchaseDto implements Purchase {
   @PrimaryGeneratedColumn()
   purchaseID: number;
-
-  @ApiProperty({ example: 'Basam C. Serad' })
-  @Column({ length: 100 })
-  supplierName: string;
 
   @ApiProperty({ example: 'Chocolate Powder' })
   @Column({ length: 100 })

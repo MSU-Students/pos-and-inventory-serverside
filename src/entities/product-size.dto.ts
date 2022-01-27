@@ -2,11 +2,12 @@ import {
   Column,
   Entity,
   JoinColumn,
-  ManyToOne,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { ProductSize } from '../interfaces/product-size.interface';
+import { ManageProductDto } from './manage-product.dto';
 
 @Entity('product_size')
 export class ProductSizeDto implements ProductSize {
@@ -18,10 +19,10 @@ export class ProductSizeDto implements ProductSize {
   price: number;
 
   @ApiProperty({ example: 'M' })
-  @Column({ length: 100 })
+  @Column({ length: 100, nullable: true })
   size: string;
 
-  @ApiProperty({ example: '01' })
-  @Column()
-  productID: number;
+  @OneToOne(() => ManageProductDto)
+  @JoinColumn({ name: 'productId' })
+  productId: ManageProductDto;
 }
