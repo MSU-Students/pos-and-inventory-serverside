@@ -1,45 +1,45 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Users } from '../interfaces/users.interface';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('User')
 export class UserDto implements Users {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @ApiProperty({ example: 'Basam' })
+  @ApiProperty({ default: 'Basam' })
   @Column({ length: 100 })
   FName: string;
 
-  @ApiProperty({ example: 'Cosain' })
+  @ApiProperty({ default: 'Cosain', required: false })
   @Column({ length: 100, nullable: true })
   MName?: string;
 
-  @ApiProperty({ example: 'Serad' })
+  @ApiProperty({ default: 'Serad' })
   @Column({ length: 100 })
   LName: string;
 
-  @ApiProperty({ example: '+639067342939' })
+  @ApiProperty({ default: '+639067342939', required: false })
   @Column({ length: 100, nullable: true })
   contact?: string;
 
-  @ApiProperty({ example: 'example@gmail.com' })
+  @ApiProperty({ default: 'default@gmail.com', required: false })
   @Column({ length: 100, nullable: true })
   email?: string;
 
-  @ApiProperty({ example: 'admin' })
+  @ApiProperty({ default: 'admin' })
   @Column({ length: 100 })
   type: 'admin' | 'cashier';
 
-  @ApiProperty({ example: 'active' })
+  @ApiProperty({ default: 'active' })
   @Column({ length: 100 })
   status: 'active' | 'inactive';
 
-  @ApiProperty({ example: 'user' })
+  @ApiProperty({ default: 'user' })
   @Column({ length: 100 })
   username: string;
 
-  @ApiProperty({ example: 'password' })
+  @ApiProperty({ default: 'password' })
   @Column({ length: 100 })
   password: string;
 

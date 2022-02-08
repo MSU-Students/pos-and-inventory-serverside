@@ -7,12 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import {
-  ApiBearerAuth,
-  ApiBody,
-  ApiOperation,
-  ApiResponse,
-} from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { InventoryDto } from '../entities/inventory.dto';
 import { InventoryService } from './inventory.service';
 

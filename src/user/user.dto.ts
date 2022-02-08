@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, PrimaryGeneratedColumn } from 'typeorm';
 
 export interface IUser {
   id?: number;
@@ -22,7 +22,7 @@ export class RegisterUserDto implements IUser {
   @Column({ length: 100 })
   FName: string;
 
-  @ApiProperty({ example: 'Cosain' })
+  @ApiProperty({ example: 'Cosain', required: false })
   @Column({ length: 100, nullable: true })
   MName?: string;
 
@@ -30,11 +30,11 @@ export class RegisterUserDto implements IUser {
   @Column({ length: 100 })
   LName: string;
 
-  @ApiProperty({ example: '+639067342939' })
+  @ApiProperty({ example: '+639067342939', required: false })
   @Column({ length: 100, nullable: true })
   contact?: string;
 
-  @ApiProperty({ example: 'example@gmail.com' })
+  @ApiProperty({ example: 'example@gmail.com', required: false })
   @Column({ length: 100, nullable: true })
   email?: string;
 

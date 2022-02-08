@@ -27,7 +27,7 @@ export class InventoryDto implements Inventory {
   @Column({ length: 100 })
   itemUnitProd: string;
 
-  @ApiProperty({ example: '02/16/2023' })
+  @ApiProperty({ example: '02/16/2023', required: false})
   @Column({ length: 100, nullable: true })
   itemExpiryDate: string;
 

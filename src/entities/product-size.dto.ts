@@ -18,7 +18,7 @@ export class ProductSizeDto implements ProductSize {
   @Column()
   price: number;
 
-  @ApiProperty({ example: 'M' })
+  @ApiProperty({ example: 'M', required: false })
   @Column({ length: 100, nullable: true })
   size: string;
 
