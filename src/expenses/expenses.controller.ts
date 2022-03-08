@@ -7,11 +7,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import {
-  ApiBody,
-  ApiOperation,
-  ApiResponse,
-} from '@nestjs/swagger';
+import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { ExpensesDto } from '../entities/expenses.dto';
 import { ExpensesService } from './expenses.service';
 
@@ -21,8 +17,8 @@ export class ExpensesController {
 
   @ApiBody({ type: ExpensesDto })
   @ApiOperation({
-    summary: 'Add new Product Size',
-    operationId: 'AddProductSize',
+    summary: 'Add new Expense',
+    operationId: 'AddExpenses',
   })
   @ApiResponse({ status: 200, type: ExpensesDto })
   @Post()
@@ -34,7 +30,7 @@ export class ExpensesController {
     summary: 'Get all Product Size',
     operationId: 'GetExpenses',
   })
-  @ApiResponse({ status: 200, type: ExpensesDto })
+  @ApiResponse({ status: 200, type: [ExpensesDto] })
   @Get()
   async findAll(): Promise<ExpensesDto[]> {
     return this.expnesesRepository.findAll();
@@ -42,30 +38,30 @@ export class ExpensesController {
 
   @ApiOperation({
     summary: 'Get Expenses by id',
-    operationId: 'GetProductSize',
+    operationId: 'GetExpense',
   })
   @ApiResponse({ status: 200, type: ExpensesDto })
-  @Get(':expensesID')
-  async findOne(@Param('expensesID') id: number): Promise<ExpensesDto> {
+  @Get(':id')
+  async findOne(@Param('id') id: number): Promise<ExpensesDto> {
     return this.expnesesRepository.findOne(id);
   }
   @ApiOperation({
-    summary: 'Update Product Size by id',
-    operationId: 'UpdateProductSize',
+    summary: 'Update Expense by id',
+    operationId: 'UpdateExpense',
   })
   @ApiResponse({ status: 200, type: ExpensesDto })
-  @Put(':expensesID')
-  async update(@Param('expensesID') id: number, @Body() job: ExpensesDto) {
+  @Put(':id')
+  async update(@Param('id') id: number, @Body() job: ExpensesDto) {
     return this.expnesesRepository.update(id, job);
   }
 
   @ApiOperation({
-    summary: 'Delete Product Size by id',
-    operationId: 'DeleteProductSize',
+    summary: 'Delete Expense by id',
+    operationId: 'DeleteExpense',
   })
   @ApiResponse({ status: 200, type: ExpensesDto })
-  @Delete(':expensesID')
-  async delete(@Param('expensesID') id: number) {
+  @Delete(':id')
+  async delete(@Param('id') id: number) {
     return this.expnesesRepository.deleteOne(id);
   }
 }

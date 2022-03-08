@@ -35,6 +35,9 @@ import { SellRecordController } from './sell-record/sell-record.controller';
 import { SellRecordDto } from './entities/sell-record.dto';
 import { AuthModule } from './user/auth.module';
 import { UserDto, UserController, UserService } from './user';
+import { MediaService } from './media/media.service';
+import { MediaController } from './media/media.controller';
+import { MediaDto } from './entities/media.dto';
 @Module({
   imports: [
     TypeOrmModule.forFeature([
@@ -51,6 +54,7 @@ import { UserDto, UserController, UserService } from './user';
       ExpensesDto,
       PurchaseDto,
       SellRecordDto,
+      MediaDto,
     ]),
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -73,6 +77,7 @@ import { UserDto, UserController, UserService } from './user';
         PurchaseDto,
         SellRecordDto,
         UserDto,
+        MediaDto,
       ],
       synchronize: true,
       dropSchema: true,
@@ -92,6 +97,7 @@ import { UserDto, UserController, UserService } from './user';
     ExpensesController,
     PurchaseController,
     SellRecordController,
+    MediaController,
   ],
   providers: [
     SupplierService,
@@ -106,6 +112,7 @@ import { UserDto, UserController, UserService } from './user';
     ExpensesService,
     PurchaseService,
     SellRecordService,
+    MediaService,
   ],
 })
 export class AppModule {}

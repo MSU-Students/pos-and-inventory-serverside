@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { SubprodCategory } from './subprod-category.interface';
 import { ProdCategoryDto } from '../prod-category/prod-category.dto';
@@ -11,6 +17,7 @@ export class SubprodCategoryDto implements SubprodCategory {
   @Column({ length: 100 })
   subProdName: string;
 
+  @JoinColumn({ name: 'productId' })
   @ManyToOne(() => ProdCategoryDto, (prodCategory) => prodCategory.subProdCat)
   prodCategory: ProdCategoryDto[];
 }

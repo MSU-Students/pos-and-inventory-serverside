@@ -97,6 +97,7 @@ export class AuthController {
   })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
+  @ApiResponse({ status: 200, type: UserDto })
   @Get('profile')
   async getProfile(@Request() req) {
     const user = await this.userService.findOne(req.user.userId);
