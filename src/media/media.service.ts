@@ -17,6 +17,15 @@ export class MediaService {
     });
     return await this.mediaRepository.save(createFile);
   }
+
+  async update(id: number, file: Express.Multer.File) {
+    const createFile = this.mediaRepository.create({
+      data: file.buffer,
+      filename: file.filename || file.originalname,
+      mimeType: file.mimetype,
+    });
+    return await this.mediaRepository.update(id, createFile);
+  }
   async findOne(id: number): Promise<MediaDto> {
     return await this.mediaRepository.findOne(id);
   }
@@ -25,3 +34,4 @@ export class MediaService {
     return this.mediaRepository.delete(id);
   }
 }
+export default MediaService;

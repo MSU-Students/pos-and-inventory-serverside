@@ -14,6 +14,11 @@ async function bootstrap() {
     .addTag('pos-and-inventory')
     .addBearerAuth()
     .build();
+  app.enableCors({
+    origin: true,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('pos-inventory-api', app, document);
   await app.listen(port || 3000);

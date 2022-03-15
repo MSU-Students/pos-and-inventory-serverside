@@ -10,6 +10,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import { ManageProduct } from '../interfaces/manage-product.interface';
 import { ProdCategoryDto } from '../category/prod-category/prod-category.dto';
 import { SellRecordDto } from './sell-record.dto';
+import { MediaDto } from './media.dto';
+
 @Entity('Manage_Product')
 export class ManageProductDto implements ManageProduct {
   @PrimaryGeneratedColumn('uuid')
@@ -27,10 +29,14 @@ export class ManageProductDto implements ManageProduct {
   @Column({ length: 100 })
   productAvailability: 'Yes' | 'No';
 
+  @OneToOne(() => MediaDto)
+  @JoinColumn({ name: 'picture_id' })
+  media: MediaDto;
+
   @OneToMany(() => SellRecordDto, (invoice) => invoice.product)
   invoice: SellRecordDto;
 
   @OneToOne(() => ProdCategoryDto)
-  @JoinColumn()
+  @JoinColumn({ name: 'productCateory_id' })
   prodCategory: ProdCategoryDto;
 }
