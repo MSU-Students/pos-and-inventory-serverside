@@ -3,4 +3,5 @@ export interface ManageProduct {
   productName: string;
   productPrice: number;
   productAvailability: 'Yes' | 'No';
+  productDateCreated: string;
 }

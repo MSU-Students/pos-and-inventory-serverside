@@ -5,4 +5,5 @@ export interface SellRecord {
   transanctionDiscount: number;
   tax: number;
   totalAmount: number;
+  saleDate: string;
 }

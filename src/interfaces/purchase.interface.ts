@@ -1,7 +1,9 @@
 export interface Purchase {
   purchaseID?: number;
   purchaseProduct: string;
-  purchaseDate?: Date;
-  purchaseStatus: string;
+  productQuantity?: number;
+  productUnit: string;
   purchaseAmount: number;
+  purchaseStatus: string;
+  purchaseDate: string;
 }

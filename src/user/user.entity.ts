@@ -43,6 +43,10 @@ export class UserDto implements Users {
   @Column({ length: 100 })
   password: string;
 
+  @ApiProperty()
+  @Column({ nullable: true })
+  userDateCreated: string;
+
   @ApiProperty({ required: false })
   @Column({ length: 255, default: '' })
   refreshToken?: string;

@@ -8,6 +8,7 @@ import {
 } from 'typeorm';
 import { Expenses } from '../interfaces/expenses.interface';
 import { ExpensesCategoryDto } from '../category/expenses-category/expenses-category.dto';
+import { SupplierDto } from './supplier.dto';
 
 @Entity('Expenses')
 export class ExpensesDto implements Expenses {
@@ -18,9 +19,9 @@ export class ExpensesDto implements Expenses {
   @Column({ length: 100 })
   expensesName: string;
 
-  @ApiProperty({ example: '01/12/2022' })
-  @Column({ length: 100 })
-  date: string;
+  @ApiProperty()
+  @Column({ nullable: true })
+  expensesDate: string;
 
   @ApiProperty({ example: 'Payment for the elec bilss' })
   @Column({ length: 100, nullable: true })
@@ -33,4 +34,13 @@ export class ExpensesDto implements Expenses {
   @OneToOne(() => ExpensesCategoryDto)
   @JoinColumn({ name: 'expensesCatId' })
   expensesCategory: ExpensesCategoryDto;
+
+  @OneToOne(() => SupplierDto, {
+    nullable: true,
+  })
+  @JoinColumn({ name: 'supplierID' })
+  supplier: SupplierDto;
+
+  @Column({ nullable: true })
+  public supplierID?: number;
 }

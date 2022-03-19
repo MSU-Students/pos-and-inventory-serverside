@@ -23,15 +23,16 @@ export class InventoryDto implements Inventory {
   @Column({ type: 'int' })
   itemQuantProd: number;
 
-  @ApiProperty({ example: 'Kilogram (kg)' })
+  @ApiProperty({ example: 'Kilogram (kg)', required: false })
   @Column({ length: 100 })
   itemUnitProd: string;
 
-  @ApiProperty({ example: '02/16/2023', required: false})
+  @ApiProperty({ example: '02/16/2023', required: false })
   @Column({ length: 100, nullable: true })
   itemExpiryDate: string;
 
-  @CreateDateColumn('')
+  @ApiProperty()
+  @Column({ nullable: true })
   itemDateCreated: Date;
 
   @OneToOne(() => InventoryCategoryDto)

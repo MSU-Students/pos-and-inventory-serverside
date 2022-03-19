@@ -36,6 +36,10 @@ export class SellRecordDto implements SellRecord {
   @Column()
   totalAmount: number;
 
+  @ApiProperty()
+  @Column({ nullable: true })
+  saleDate: string;
+
   @OneToOne(() => UserDto)
   @JoinColumn()
   user: UserDto;

@@ -29,6 +29,10 @@ export class ManageProductDto implements ManageProduct {
   @Column({ length: 100 })
   productAvailability: 'Yes' | 'No';
 
+  @ApiProperty()
+  @Column({ nullable: true })
+  productDateCreated: string;
+
   @OneToOne(() => MediaDto)
   @JoinColumn({ name: 'picture_id' })
   media: MediaDto;

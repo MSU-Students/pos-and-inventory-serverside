@@ -12,6 +12,7 @@ export interface IUser {
   contact?: string;
   email?: string;
   status: 'active' | 'inactive';
+  userDateCreated?: Date;
 }
 
 export class RegisterUserDto implements IUser {
@@ -53,6 +54,9 @@ export class RegisterUserDto implements IUser {
   @ApiProperty({ example: 'password' })
   @Column({ length: 100 })
   password: string;
+
+  @Column({ nullable: true })
+  userDateCreated?: Date;
 }
 
 export class LoginUserDto implements IUser {
@@ -68,6 +72,7 @@ export class LoginUserDto implements IUser {
   contact?: string;
   email?: string;
   status: 'active' | 'inactive';
+  userDateCreated?: Date;
 }
 
 export class RefreshDto {

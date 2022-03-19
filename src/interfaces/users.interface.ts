@@ -9,4 +9,5 @@ export interface Users {
   contact?: string;
   email?: string;
   status: 'active' | 'inactive';
+  userDateCreated: string;
 }
