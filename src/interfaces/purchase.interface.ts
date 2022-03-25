@@ -6,4 +6,5 @@ export interface Purchase {
   purchaseAmount: number;
   purchaseStatus: string;
   purchaseDate: string;
+  purchaseCategory: string;
 }

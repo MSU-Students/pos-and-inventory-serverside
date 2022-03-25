@@ -16,6 +16,12 @@ export class InventoryService {
   async findAll(): Promise<InventoryDto[]> {
     return this.inventoryRepository.find();
   }
+  async filterItem(keyword: string): Promise<InventoryDto[]> {
+    return this.inventoryRepository.find({
+      relations: ['inventoryCat'],
+      where: { inventoryCat: { categoryName: keyword } },
+    });
+  }
   async findOne(itemCode: string): Promise<InventoryDto> {
     return this.inventoryRepository.findOne(itemCode);
   }

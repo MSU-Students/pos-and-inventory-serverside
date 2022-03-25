@@ -33,7 +33,7 @@ export class SellRecordDto implements SellRecord {
   tax: number;
 
   @ApiProperty({ example: '150' })
-  @Column()
+  @Column({ type: 'double' })
   totalAmount: number;
 
   @ApiProperty()

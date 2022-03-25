@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { ProdCategory } from './prod-category.interface';
 import { SubprodCategoryDto } from '../subprod-category/subprod-category.dto';
@@ -12,6 +12,6 @@ export class ProdCategoryDto implements ProdCategory {
   @Column({ length: 100 })
   prodCategoryName: string;
 
-  @OneToMany(() => SubprodCategoryDto, (subProd) => subProd.prodCategory)
+  @ManyToOne(() => SubprodCategoryDto, (subProd) => subProd.prodCategory)
   subProdCat: SubprodCategoryDto[];
 }

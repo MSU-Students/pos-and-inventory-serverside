@@ -9,7 +9,6 @@ import {
 } from 'typeorm';
 import { Purchase } from '../interfaces/purchase.interface';
 import { SupplierDto } from '../entities/supplier.dto';
-import { InventoryCategoryDto } from 'src/category/inventory-category/inventory-category.dto';
 
 @Entity('Purchase')
 export class PurchaseDto implements Purchase {
@@ -24,6 +23,10 @@ export class PurchaseDto implements Purchase {
   @Column({ nullable: true })
   purchaseDate: string;
 
+  @ApiProperty({ default: 'Ingredients' })
+  @Column({ length: 100 })
+  purchaseCategory: string;
+
   @ApiProperty({ default: 23, required: false })
   @Column({ nullable: true })
   productQuantity?: number;
@@ -37,20 +40,10 @@ export class PurchaseDto implements Purchase {
   purchaseStatus: string;
 
   @ApiProperty({ default: '7000' })
-  @Column()
+  @Column({ type: 'double' })
   purchaseAmount: number;
 
   @OneToOne(() => SupplierDto)
   @JoinColumn({ name: 'supplierId' })
   supplier: SupplierDto;
-  @ApiProperty()
-  @Column({ nullable: true })
-  public supplierId?: number;
-
-  @OneToOne(() => InventoryCategoryDto)
-  @JoinColumn({ name: 'inventoryCategoryID' })
-  inventoryCategory: InventoryCategoryDto;
-  @ApiProperty()
-  @Column({ nullable: true })
-  public inventoryCategoryID?: number;
 }

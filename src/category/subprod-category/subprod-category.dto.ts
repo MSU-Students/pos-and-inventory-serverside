@@ -2,7 +2,7 @@ import {
   Column,
   Entity,
   JoinColumn,
-  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
@@ -17,7 +17,6 @@ export class SubprodCategoryDto implements SubprodCategory {
   @Column({ length: 100 })
   subProdName: string;
 
-  @JoinColumn({ name: 'productId' })
-  @ManyToOne(() => ProdCategoryDto, (prodCategory) => prodCategory.subProdCat)
+  @OneToMany(() => ProdCategoryDto, (prodCategory) => prodCategory.subProdCat)
   prodCategory: ProdCategoryDto[];
 }

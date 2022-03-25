@@ -7,7 +7,6 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Expenses } from '../interfaces/expenses.interface';
-import { ExpensesCategoryDto } from '../category/expenses-category/expenses-category.dto';
 import { SupplierDto } from './supplier.dto';
 
 @Entity('Expenses')
@@ -28,12 +27,12 @@ export class ExpensesDto implements Expenses {
   description: string;
 
   @ApiProperty({ example: '7000' })
-  @Column()
+  @Column({ type: 'double' })
   amount: number;
 
-  @OneToOne(() => ExpensesCategoryDto)
-  @JoinColumn({ name: 'expensesCatId' })
-  expensesCategory: ExpensesCategoryDto;
+  @ApiProperty({ example: 'Bill', required: false })
+  @Column({ nullable: true })
+  expensesCategory: string;
 
   @OneToOne(() => SupplierDto, {
     nullable: true,

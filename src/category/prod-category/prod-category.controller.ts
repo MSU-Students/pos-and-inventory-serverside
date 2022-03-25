@@ -45,6 +45,7 @@ export class ProdCategoryController {
   async findOne(@Param('prodCategoryID') id: number): Promise<ProdCategoryDto> {
     return this.prodCatService.findOne(id);
   }
+
   @ApiOperation({
     summary: 'Update Product Category by id',
     operationId: 'UpdateProductCategory',
@@ -57,6 +58,11 @@ export class ProdCategoryController {
   ) {
     return this.prodCatService.update(id, job);
   }
+
+  @ApiOperation({
+    summary: 'Delete Product Category by id',
+    operationId: 'DeleteProductCategory',
+  })
   @ApiResponse({ status: 200, type: ProdCategoryDto })
   @Delete(':prodCategoryID')
   async delete(@Param('prodCategoryID') id: number) {

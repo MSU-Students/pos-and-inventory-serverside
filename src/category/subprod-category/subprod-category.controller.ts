@@ -62,7 +62,7 @@ export class SubprodCategoryController {
 
   @ApiOperation({
     summary: 'Delete SubCategory of Product by id',
-    operationId: 'DeleteSubCategory of Product',
+    operationId: 'DeleteSubCategory',
   })
   @ApiResponse({ status: 200, type: SubprodCategoryDto })
   @Delete(':subProdCategoryID')

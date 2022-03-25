@@ -39,6 +39,18 @@ export class InventoryController {
   async findOne(@Param('itemCode') id: string): Promise<InventoryDto> {
     return this.inventoryService.findOne(id);
   }
+
+  @ApiOperation({
+    summary: 'Filter Inventory item by keyword',
+    operationId: 'FilterInventoryItem',
+  })
+  @ApiResponse({ status: 200, type: InventoryDto })
+  @Get('filter/:keyword')
+  async filterItem(@Param('keyword') keyword: string): Promise<InventoryDto[]> {
+    console.log('keyword', keyword);
+    return this.inventoryService.filterItem(keyword);
+  }
+
   @ApiOperation({
     summary: 'Update Inventory by id',
     operationId: 'UpdateInventory',

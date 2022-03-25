@@ -22,7 +22,7 @@ export class ManageProductDto implements ManageProduct {
   productName: string;
 
   @ApiProperty({ example: '150' })
-  @Column({ type: 'int' })
+  @Column({ type: 'double' })
   productPrice: number;
 
   @ApiProperty({ example: 'Yes' })
@@ -33,14 +33,14 @@ export class ManageProductDto implements ManageProduct {
   @Column({ nullable: true })
   productDateCreated: string;
 
-  @OneToOne(() => MediaDto)
-  @JoinColumn({ name: 'picture_id' })
-  media: MediaDto;
-
   @OneToMany(() => SellRecordDto, (invoice) => invoice.product)
   invoice: SellRecordDto;
 
   @OneToOne(() => ProdCategoryDto)
   @JoinColumn({ name: 'productCateory_id' })
   prodCategory: ProdCategoryDto;
+
+  @OneToOne(() => MediaDto, { nullable: true })
+  @JoinColumn({ name: 'productPicId' })
+  media: MediaDto;
 }
