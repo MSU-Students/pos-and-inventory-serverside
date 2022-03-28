@@ -1,6 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Supplier } from '../interfaces/supplier.interface';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { ExpensesDto } from './expenses.dto';
+import { PurchaseDto } from './purchase.dto';
 
 @Entity('Supplier')
 export class SupplierDto implements Supplier {
@@ -26,4 +28,10 @@ export class SupplierDto implements Supplier {
   @ApiProperty({ example: 'Dimaluna, Marawi City', required: false })
   @Column({ length: 100, nullable: true })
   address: string;
+
+  @ManyToOne(() => ExpensesDto, (expenses) => expenses.supplier)
+  expenses: ExpensesDto;
+
+  @ManyToOne(() => PurchaseDto, (purchase) => purchase.supplier)
+  purchases: PurchaseDto;
 }

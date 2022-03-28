@@ -5,4 +5,5 @@ export interface Expenses {
   description: string;
   amount: number;
   expensesCategory: string;
+  supplierId: number;
 }

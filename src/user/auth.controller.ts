@@ -32,7 +32,7 @@ export class AuthController {
   @ApiResponse({ status: 200, type: UserDto })
   @Post('/register')
   create(@Body() user: UserDto) {
-    if (user.refreshToken == 'eSugo') {
+    if (user.refreshToken == '') {
       return this.authService.register({
         ...user,
         refreshToken: undefined,
@@ -103,6 +103,7 @@ export class AuthController {
     const user = await this.userService.findOne(req.user.userId);
     return {
       ...user,
+      id: undefined,
       password: undefined,
       refreshToken: undefined,
     };

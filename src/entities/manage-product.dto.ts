@@ -25,6 +25,14 @@ export class ManageProductDto implements ManageProduct {
   @Column({ type: 'double' })
   productPrice: number;
 
+  @ApiProperty({ example: 'Drinks' })
+  @Column()
+  productCategory: string;
+
+  @ApiProperty({ example: 'Frappe' })
+  @Column()
+  productSubCategory: string;
+
   @ApiProperty({ example: 'Yes' })
   @Column({ length: 100 })
   productAvailability: 'Yes' | 'No';

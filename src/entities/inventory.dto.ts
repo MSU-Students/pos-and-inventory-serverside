@@ -24,6 +24,14 @@ export class InventoryDto implements Inventory {
   @Column({ type: 'int' })
   itemQuantProd: number;
 
+  @ApiProperty({ example: '23' })
+  @Column({ type: 'int' })
+  itemQuantStatus: number;
+
+  @ApiProperty({ example: 'Available', required: false })
+  @Column({ nullable: false })
+  itemStatus: string;
+
   @ApiProperty({ example: 'Kilogram (kg)', required: false })
   @Column({ length: 100 })
   itemUnitProd: string;
@@ -38,5 +46,5 @@ export class InventoryDto implements Inventory {
 
   @ApiProperty()
   @Column({ nullable: true })
-  itemDateCreated: Date;
+  itemDateCreated: string;
 }

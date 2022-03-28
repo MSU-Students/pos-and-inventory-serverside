@@ -7,4 +7,5 @@ export interface Purchase {
   purchaseStatus: string;
   purchaseDate: string;
   purchaseCategory: string;
+  purchaseSupplierId: number;
 }
