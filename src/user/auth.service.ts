@@ -64,6 +64,19 @@ export class AuthService {
     return await this.userService.create(user);
   }
 
+  // async updateRegister(id: number, user: UserDto) {
+  //   const hashedPassword = await bcrypt.hash(user.password, 10);
+  //   user.password = hashedPassword;
+  //   user.username = user.username.toLowerCase();
+  //   user.FName = user.FName;
+  //   user.MName = user.MName;
+  //   user.LName = user.LName;
+  //   user.type = user.type;
+  //   user.contact = user.contact;
+  //   user.email = user.email;
+  //   return await this.userService.update(id, user);
+  // }
+
   async setCurrentRefreshToken(refreshToken: string, userId: number) {
     const currentHashedRefreshToken = await bcrypt.hash(refreshToken, 10);
     return await this.userService.setCurrentRefreshToken(

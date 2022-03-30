@@ -39,6 +39,14 @@ export class PurchaseController {
   async findOne(@Param('purchaseID') id: number): Promise<PurchaseDto> {
     return this.purchaseService.findOne(id);
   }
+
+  @ApiOperation({ summary: 'Filter', operationId: 'FilterPurchase' })
+  @ApiResponse({ status: 200, type: PurchaseDto })
+  @Get(':id')
+  async filter(@Param('id') id: string): Promise<PurchaseDto[]> {
+    return this.purchaseService.filter(id);
+  }
+
   @ApiOperation({
     summary: 'Update Purchase by id',
     operationId: 'UpdatePurchase',

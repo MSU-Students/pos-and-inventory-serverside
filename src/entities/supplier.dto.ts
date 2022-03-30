@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Supplier } from '../interfaces/supplier.interface';
-import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { ExpensesDto } from './expenses.dto';
 import { PurchaseDto } from './purchase.dto';
 
@@ -29,9 +29,13 @@ export class SupplierDto implements Supplier {
   @Column({ length: 100, nullable: true })
   address: string;
 
-  @ManyToOne(() => ExpensesDto, (expenses) => expenses.supplier)
-  expenses: ExpensesDto;
+  @OneToMany(() => ExpensesDto, (expenses) => expenses.supplier, {
+    nullable: true,
+  })
+  expenses: ExpensesDto[];
 
-  @ManyToOne(() => PurchaseDto, (purchase) => purchase.supplier)
-  purchases: PurchaseDto;
+  @OneToMany(() => PurchaseDto, (purchase) => purchase.supplierPurchase, {
+    nullable: true,
+  })
+  purchase: PurchaseDto[];
 }

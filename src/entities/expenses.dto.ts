@@ -3,6 +3,7 @@ import {
   Column,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -34,11 +35,12 @@ export class ExpensesDto implements Expenses {
   @Column({ nullable: true })
   expensesCategory: string;
 
-  @OneToMany(() => SupplierDto, (supplier) => supplier.expenses)
-  @JoinColumn({ name: 'supplierId' })
+  @ManyToOne(() => SupplierDto, (supplier) => supplier.expenses, {
+    nullable: true,
+  })
   supplier: SupplierDto[];
 
   @ApiProperty({ required: false })
   @Column({ nullable: true })
-  supplierId: number;
+  supplierSupplierID: number;
 }

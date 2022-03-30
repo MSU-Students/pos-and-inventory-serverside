@@ -14,7 +14,9 @@ export class ExpensesService {
     return this.expensesRepository.save(application);
   }
   async findAll(): Promise<ExpensesDto[]> {
-    return this.expensesRepository.find();
+    return this.expensesRepository.find({
+      relations: ['supplier'],
+    });
   }
   async findOne(expensesID: number): Promise<ExpensesDto> {
     return this.expensesRepository.findOne(expensesID);

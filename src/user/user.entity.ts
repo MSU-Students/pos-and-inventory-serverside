@@ -48,6 +48,6 @@ export class UserDto implements Users {
   userDateCreated: string;
 
   @ApiProperty({ required: false })
-  @Column({ length: 255, default: '' })
+  @Column({ length: 255, default: '', nullable: true })
   refreshToken?: string;
 }
