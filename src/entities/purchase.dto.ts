@@ -32,7 +32,7 @@ export class PurchaseDto implements Purchase {
   @Column({ length: 100 })
   purchaseStatus: string;
 
-  @ApiProperty({ default: '7000' })
+  @ApiProperty({ default: '7000', required: false })
   @Column({ type: 'double' })
   purchaseAmount: number;
 

@@ -2,7 +2,8 @@ import {
   Column,
   Entity,
   JoinColumn,
-  OneToOne,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
@@ -22,7 +23,8 @@ export class ProductSizeDto implements ProductSize {
   @Column({ length: 100, nullable: true })
   size: string;
 
-  @OneToOne(() => ManageProductDto)
-  @JoinColumn({ name: 'productId' })
-  productId: ManageProductDto;
+  @OneToMany(() => ManageProductDto, (manage) => manage.size, {
+    nullable: true,
+  })
+  manage: ManageProductDto[];
 }

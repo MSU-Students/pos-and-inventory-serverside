@@ -27,7 +27,7 @@ export class ExpensesDto implements Expenses {
   @Column({ length: 100, nullable: true })
   description: string;
 
-  @ApiProperty({ example: '7000' })
+  @ApiProperty({ example: '7000', required: false })
   @Column({ type: 'double' })
   amount: number;
 
@@ -38,7 +38,7 @@ export class ExpensesDto implements Expenses {
   @ManyToOne(() => SupplierDto, (supplier) => supplier.expenses, {
     nullable: true,
   })
-  supplier: SupplierDto[];
+  supplier: SupplierDto;
 
   @ApiProperty({ required: false })
   @Column({ nullable: true })

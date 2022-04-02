@@ -13,18 +13,18 @@ import { Inventory } from '../interfaces/inventory.interface';
 
 @Entity('Inventory')
 export class InventoryDto implements Inventory {
-  @PrimaryGeneratedColumn('uuid')
-  itemCode?: string;
+  @PrimaryGeneratedColumn()
+  itemCode?: number;
 
   @ApiProperty({ example: 'Chocolate Powder' })
   @Column({ length: 100 })
   itemName: string;
 
-  @ApiProperty({ example: '23' })
+  @ApiProperty({ example: '23', required: false })
   @Column({ type: 'int' })
   itemQuantProd: number;
 
-  @ApiProperty({ example: '23' })
+  @ApiProperty({ example: '23', required: false })
   @Column({ type: 'int' })
   itemQuantStatus: number;
 

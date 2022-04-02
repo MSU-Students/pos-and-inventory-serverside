@@ -1,5 +1,5 @@
 export interface Inventory {
-  itemCode?: string;
+  itemCode?: number;
   itemName: string;
   itemQuantProd: number;
   itemQuantStatus: number;

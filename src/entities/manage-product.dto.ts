@@ -2,6 +2,7 @@ import {
   Column,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -11,6 +12,7 @@ import { ManageProduct } from '../interfaces/manage-product.interface';
 import { ProdCategoryDto } from '../category/prod-category/prod-category.dto';
 import { SellRecordDto } from './sell-record.dto';
 import { MediaDto } from './media.dto';
+import { ProductSizeDto } from './product-size.dto';
 
 @Entity('Manage_Product')
 export class ManageProductDto implements ManageProduct {
@@ -51,4 +53,7 @@ export class ManageProductDto implements ManageProduct {
   @OneToOne(() => MediaDto, { nullable: true })
   @JoinColumn({ name: 'productPicId' })
   media: MediaDto;
+
+  @ManyToOne(() => ProductSizeDto, (size) => size.manage)
+  size: ProductSizeDto[];
 }
