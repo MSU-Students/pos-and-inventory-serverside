@@ -14,8 +14,9 @@ import { ManageProductDto } from './manage-product.dto';
 
 @Entity('sell_Record')
 export class SellRecordDto implements SellRecord {
+  @ApiProperty({ required: false })
   @PrimaryGeneratedColumn()
-  invoiceID: number;
+  invoiceID?: number;
 
   @CreateDateColumn('')
   invoiceDate: string;

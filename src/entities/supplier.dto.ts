@@ -6,8 +6,9 @@ import { PurchaseDto } from './purchase.dto';
 
 @Entity('Supplier')
 export class SupplierDto implements Supplier {
+  @ApiProperty({ required: false })
   @PrimaryGeneratedColumn()
-  supplierID: number;
+  supplierID?: number;
 
   @ApiProperty({ example: 'Basam C. Serad' })
   @Column({ length: 100 })

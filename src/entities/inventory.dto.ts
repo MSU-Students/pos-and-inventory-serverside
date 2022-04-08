@@ -13,6 +13,7 @@ import { Inventory } from '../interfaces/inventory.interface';
 
 @Entity('Inventory')
 export class InventoryDto implements Inventory {
+  @ApiProperty({ required: false })
   @PrimaryGeneratedColumn()
   itemCode?: number;
 

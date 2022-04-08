@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  NotFoundException,
   Param,
   Post,
   Put,
@@ -37,7 +38,11 @@ export class SupplierController {
   @ApiResponse({ status: 200, type: SupplierDto })
   @Get(':supplierID')
   async findOne(@Param('supplierID') id: number): Promise<SupplierDto> {
-    return this.supplierService.findOne(id);
+    const res = await this.supplierService.findOne(id);
+    if (!res) {
+      throw new NotFoundException('Supplier ID not found');
+    }
+    return res;
   }
   @ApiOperation({
     summary: 'Update supplier by id',

@@ -1,5 +1,5 @@
 export interface SellRecord {
-  invoiceID: number;
+  invoiceID?: number;
   invoiceDate: string;
   customerName: string;
   transanctionDiscount: number;

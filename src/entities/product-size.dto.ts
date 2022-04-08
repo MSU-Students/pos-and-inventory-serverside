@@ -12,8 +12,9 @@ import { ManageProductDto } from './manage-product.dto';
 
 @Entity('product_size')
 export class ProductSizeDto implements ProductSize {
+  @ApiProperty({ required: false })
   @PrimaryGeneratedColumn()
-  productSizeID: number;
+  productSizeID?: number;
 
   @ApiProperty({ example: '1000' })
   @Column()

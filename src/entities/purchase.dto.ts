@@ -5,6 +5,7 @@ import { SupplierDto } from '../entities/supplier.dto';
 
 @Entity('Purchase')
 export class PurchaseDto implements Purchase {
+  @ApiProperty({ required: false })
   @PrimaryGeneratedColumn()
   purchaseID?: number;
 

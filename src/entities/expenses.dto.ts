@@ -12,6 +12,7 @@ import { SupplierDto } from './supplier.dto';
 
 @Entity('Expenses')
 export class ExpensesDto implements Expenses {
+  @ApiProperty({ required: false })
   @PrimaryGeneratedColumn()
   expensesID?: number;
 
