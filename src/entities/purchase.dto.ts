@@ -37,6 +37,7 @@ export class PurchaseDto implements Purchase {
   @Column({ type: 'double' })
   purchaseAmount: number;
 
+  @ApiProperty({ required: false, type: () => SupplierDto })
   @ManyToOne(
     () => SupplierDto,
     (supplierPurchase) => supplierPurchase.purchase,
@@ -45,8 +46,4 @@ export class PurchaseDto implements Purchase {
     },
   )
   supplierPurchase: SupplierDto;
-
-  @ApiProperty({ required: false })
-  @Column({ nullable: true })
-  supplierPurchaseSupplierID: number;
 }

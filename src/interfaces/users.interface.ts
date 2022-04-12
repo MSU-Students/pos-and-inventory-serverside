@@ -8,6 +8,6 @@ export interface Users {
   type?: 'admin' | 'cashier';
   contact?: string;
   email?: string;
-  status: 'active' | 'inactive';
+  status: 'Active' | 'Inactive';
   userDateCreated: string;
 }

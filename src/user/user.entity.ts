@@ -32,9 +32,9 @@ export class UserDto implements Users {
   @Column({ length: 100 })
   type: 'admin' | 'cashier';
 
-  @ApiProperty({ default: 'active' })
+  @ApiProperty({ default: 'Active' })
   @Column({ length: 100 })
-  status: 'active' | 'inactive';
+  status: 'Active' | 'Inactive';
 
   @ApiProperty({ default: 'user' })
   @Column({ length: 100 })

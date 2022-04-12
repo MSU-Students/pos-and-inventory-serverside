@@ -36,12 +36,9 @@ export class ExpensesDto implements Expenses {
   @Column({ nullable: true })
   expensesCategory: string;
 
+  @ApiProperty({ required: false, type: () => SupplierDto })
   @ManyToOne(() => SupplierDto, (supplier) => supplier.expenses, {
     nullable: true,
   })
   supplier: SupplierDto;
-
-  @ApiProperty({ required: false })
-  @Column({ nullable: true })
-  supplierSupplierID: number;
 }

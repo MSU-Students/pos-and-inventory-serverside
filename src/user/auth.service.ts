@@ -17,7 +17,7 @@ export class AuthService {
   async validateUser(username: string, pass: string): Promise<Users> {
     const user = await this.userService.findByUsername(username);
     const passwordMatched = user && (await bcrypt.compare(pass, user.password));
-    if (passwordMatched && user.status != 'inactive') {
+    if (passwordMatched && user.status != 'Inactive') {
       return user;
     }
     return null;
