@@ -1,51 +1,43 @@
 import {
   Column,
-  CreateDateColumn,
   Entity,
   JoinColumn,
+  ManyToMany,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { SellRecord } from '../interfaces/sell-Record.interface';
 import { UserDto } from '../user/user.entity';
-import { ManageProductDto } from './manage-product.dto';
+import { CustomerDto } from './customer.dto';
+import { SaleOrderDto } from './sale-order.dto';
 
-@Entity('sell_Record')
+@Entity('Sale_Record')
 export class SellRecordDto implements SellRecord {
   @ApiProperty({ required: false })
-  @PrimaryGeneratedColumn()
-  invoiceID?: number;
+  @PrimaryGeneratedColumn('uuid')
+  invoiceID?: string;
 
-  @CreateDateColumn('')
-  invoiceDate: string;
-
-  @ApiProperty({ example: 'Basam' })
-  @Column({ length: 100 })
-  customerName: string;
-
-  @ApiProperty({ example: '10' })
+  @ApiProperty({ example: '12/23/1998' })
   @Column()
-  transanctionDiscount: number;
-
-  @ApiProperty({ example: '5' })
-  @Column()
-  tax: number;
+  sales_order_created: string;
 
   @ApiProperty({ example: '150' })
   @Column({ type: 'double' })
   totalAmount: number;
 
-  @ApiProperty()
-  @Column({ nullable: true })
-  saleDate: string;
-
   @OneToOne(() => UserDto)
   @JoinColumn()
   user: UserDto;
 
-  @ManyToOne(() => ManageProductDto, (product) => product.invoice)
-  @JoinColumn({ name: 'productId' })
-  product: ManageProductDto[];
+  @OneToOne(() => CustomerDto)
+  @JoinColumn()
+  customer: CustomerDto;
+
+  @ApiProperty({ required: false, type: () => SaleOrderDto })
+  @OneToMany(() => SaleOrderDto, (saleOrder) => saleOrder.invoice)
+  @JoinColumn({ name: 'saleOrderID' })
+  saleOrder: SaleOrderDto[];
 }

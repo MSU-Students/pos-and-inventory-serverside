@@ -1,4 +1,3 @@
-import { ProdCategoryDto } from './category/prod-category/prod-category.dto';
 import { ManageProductDto } from './entities/manage-product.dto';
 import { InventoryDto } from './entities/inventory.dto';
 import { Module } from '@nestjs/common';
@@ -10,28 +9,26 @@ import { ManageProductController } from './manage-product/manage-product.control
 import { ManageProductService } from './manage-product/manage-product.service';
 import { InventoryController } from './inventory/inventory.controller';
 import { InventoryService } from './inventory/inventory.service';
-import { ProdCategoryService } from './category/prod-category/prod-category.service';
-import { ProdCategoryController } from './category/prod-category/prod-category.controller';
-import { SubprodCategoryService } from './category/subprod-category/subprod-category.service';
-import { SubprodCategoryController } from './category/subprod-category/subprod-category.controller';
-import { SubprodCategoryDto } from './category/subprod-category/subprod-category.dto';
-import { ProductSizeService } from './product-size/product-size.service';
-import { ProductSizeController } from './product-size/product-size.controller';
-import { ProductSizeDto } from './entities/product-size.dto';
 import { ExpensesService } from './expenses/expenses.service';
 import { ExpensesController } from './expenses/expenses.controller';
 import { ExpensesDto } from './entities/expenses.dto';
 import { PurchaseDto } from './entities/purchase.dto';
 import { PurchaseService } from './purchase/purchase.service';
 import { PurchaseController } from './purchase/purchase.controller';
-import { SellRecordService } from './sell-record/sell-record.service';
-import { SellRecordController } from './sell-record/sell-record.controller';
+import { SellRecordService } from './sale-record/sell-record.service';
+import { SellRecordController } from './sale-record/sell-record.controller';
 import { SellRecordDto } from './entities/sell-record.dto';
 import { AuthModule } from './user/auth.module';
 import { UserDto, UserController, UserService } from './user';
 import { MediaService } from './media/media.service';
 import { MediaController } from './media/media.controller';
 import { MediaDto } from './entities/media.dto';
+import { SaleOrderDto } from './entities/sale-order.dto';
+import { CustomerDto } from './entities/customer.dto';
+import { CustomerService } from './customer/customer.service';
+import { CustomerController } from './customer/customer.controller';
+import { SaleOrderController } from './sale-order/sale-order.controller';
+import { SaleOrderService } from './sale-order/sale-order.service';
 @Module({
   imports: [
     TypeOrmModule.forFeature([
@@ -39,14 +36,12 @@ import { MediaDto } from './entities/media.dto';
       SupplierDto,
       InventoryDto,
       ManageProductDto,
-      ProdCategoryDto,
-      SubprodCategoryDto,
-      ProdCategoryDto,
-      ProductSizeDto,
       ExpensesDto,
       PurchaseDto,
       SellRecordDto,
       MediaDto,
+      SaleOrderDto,
+      CustomerDto,
     ]),
     TypeOrmModule.forRoot({
       type: 'mysql',
@@ -59,18 +54,16 @@ import { MediaDto } from './entities/media.dto';
         SupplierDto,
         InventoryDto,
         ManageProductDto,
-        ProdCategoryDto,
-        SubprodCategoryDto,
-        SubprodCategoryDto,
-        ProductSizeDto,
         ExpensesDto,
         PurchaseDto,
         SellRecordDto,
         UserDto,
         MediaDto,
+        SaleOrderDto,
+        CustomerDto,
       ],
-      // synchronize: true,
-      // dropSchema: true,
+      synchronize: true,
+      dropSchema: true,
     }),
     AuthModule,
   ],
@@ -79,26 +72,24 @@ import { MediaDto } from './entities/media.dto';
     UserController,
     ManageProductController,
     InventoryController,
-    ProdCategoryController,
-    SubprodCategoryController,
-    ProductSizeController,
     ExpensesController,
     PurchaseController,
     SellRecordController,
     MediaController,
+    CustomerController,
+    SaleOrderController,
   ],
   providers: [
     SupplierService,
     UserService,
     ManageProductService,
     InventoryService,
-    ProdCategoryService,
-    SubprodCategoryService,
-    ProductSizeService,
     ExpensesService,
     PurchaseService,
     SellRecordService,
     MediaService,
+    CustomerService,
+    SaleOrderService,
   ],
 })
 export class AppModule {}

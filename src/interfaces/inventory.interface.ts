@@ -8,4 +8,5 @@ export interface Inventory {
   itemExpiryDate: string;
   itemDateCreated: string;
   itemCategory: string;
+  itemConsumeAt: string;
 }

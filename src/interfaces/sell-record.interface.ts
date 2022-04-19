@@ -1,9 +1,5 @@
 export interface SellRecord {
-  invoiceID?: number;
-  invoiceDate: string;
-  customerName: string;
-  transanctionDiscount: number;
-  tax: number;
+  invoiceID?: string;
+  sales_order_created: string;
   totalAmount: number;
-  saleDate: string;
 }

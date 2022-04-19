@@ -9,10 +9,8 @@ import {
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { ManageProduct } from '../interfaces/manage-product.interface';
-import { ProdCategoryDto } from '../category/prod-category/prod-category.dto';
 import { SellRecordDto } from './sell-record.dto';
 import { MediaDto } from './media.dto';
-import { ProductSizeDto } from './product-size.dto';
 
 @Entity('Manage_Product')
 export class ManageProductDto implements ManageProduct {
@@ -48,17 +46,7 @@ export class ManageProductDto implements ManageProduct {
   @Column({ nullable: true })
   productDateCreated: string;
 
-  @OneToMany(() => SellRecordDto, (invoice) => invoice.product)
-  invoice: SellRecordDto;
-
-  @OneToOne(() => ProdCategoryDto)
-  @JoinColumn({ name: 'productCateory_id' })
-  prodCategory: ProdCategoryDto;
-
   @OneToOne(() => MediaDto, { nullable: true })
   @JoinColumn({ name: 'productPicId' })
   media: MediaDto;
-
-  @ManyToOne(() => ProductSizeDto, (size) => size.manage)
-  size: ProductSizeDto[];
 }

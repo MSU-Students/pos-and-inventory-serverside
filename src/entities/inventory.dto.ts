@@ -1,13 +1,4 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { Inventory } from '../interfaces/inventory.interface';
 
@@ -48,4 +39,8 @@ export class InventoryDto implements Inventory {
   @ApiProperty()
   @Column({ nullable: true })
   itemDateCreated: string;
+
+  @ApiProperty()
+  @Column({ nullable: true })
+  itemConsumeAt: string;
 }
