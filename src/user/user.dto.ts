@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, PrimaryGeneratedColumn } from 'typeorm';
+import { SaleRecordDto } from 'src/entities/sale-record.dto';
+import { Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 export interface IUser {
   id?: number;
@@ -57,6 +58,9 @@ export class RegisterUserDto implements IUser {
 
   @Column({ nullable: true })
   userDateCreated?: Date;
+
+  @OneToMany(() => SaleRecordDto, (sale) => sale.user)
+  sale: SaleRecordDto[];
 }
 
 export class LoginUserDto implements IUser {

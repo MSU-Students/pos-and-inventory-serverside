@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Users } from '../interfaces/users.interface';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { SaleRecordDto } from 'src/entities/sale-record.dto';
 
 @Entity('User')
 export class UserDto implements Users {
@@ -51,4 +52,7 @@ export class UserDto implements Users {
   @ApiProperty({ required: false })
   @Column({ length: 255, default: '', nullable: true })
   refreshToken?: string;
+
+  @OneToMany(() => SaleRecordDto, (sale) => sale.user)
+  sale: SaleRecordDto[];
 }

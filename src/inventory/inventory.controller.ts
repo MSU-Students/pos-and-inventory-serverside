@@ -47,7 +47,6 @@ export class InventoryController {
   @ApiResponse({ status: 200, type: InventoryDto })
   @Get('filter/:keyword')
   async filterItem(@Param('keyword') keyword: string): Promise<InventoryDto[]> {
-    console.log('keyword', keyword);
     return this.inventoryService.filterItem(keyword);
   }
 

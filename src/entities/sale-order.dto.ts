@@ -10,7 +10,7 @@ import {
 } from 'typeorm';
 import { SellOrder } from '../interfaces/sell-order.interface';
 import { ManageProductDto } from './manage-product.dto';
-import { SellRecordDto } from './sell-record.dto';
+import { SaleRecordDto } from './sale-record.dto';
 
 @Entity('Sale_Order')
 export class SaleOrderDto implements SellOrder {
@@ -37,8 +37,8 @@ export class SaleOrderDto implements SellOrder {
   @Column({})
   subCategory: string;
 
-  @ManyToOne(() => SellRecordDto, (invoice) => invoice.saleOrder)
-  invoice: SellRecordDto;
+  @ManyToOne(() => SaleRecordDto, (invoice) => invoice.saleOrder)
+  invoice: SaleRecordDto;
 
   @ManyToMany(() => ManageProductDto)
   @JoinTable()

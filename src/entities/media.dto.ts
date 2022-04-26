@@ -5,7 +5,7 @@ import { ApiProperty } from '@nestjs/swagger';
 @Entity('productImage')
 export class MediaDto implements Media {
   @ApiProperty({ required: false })
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id?: number;
 
   @ApiProperty()

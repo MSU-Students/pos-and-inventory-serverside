@@ -9,13 +9,13 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
-import { SellRecord } from '../interfaces/sell-Record.interface';
+import { SaleRecord } from '../interfaces/sell-Record.interface';
 import { UserDto } from '../user/user.entity';
 import { CustomerDto } from './customer.dto';
 import { SaleOrderDto } from './sale-order.dto';
 
 @Entity('Sale_Record')
-export class SellRecordDto implements SellRecord {
+export class SaleRecordDto implements SaleRecord {
   @ApiProperty({ required: false })
   @PrimaryGeneratedColumn('uuid')
   invoiceID?: string;
@@ -28,16 +28,15 @@ export class SellRecordDto implements SellRecord {
   @Column({ type: 'double' })
   totalAmount: number;
 
-  @OneToOne(() => UserDto)
-  @JoinColumn()
+  @ApiProperty({ required: false, type: () => UserDto })
+  @ManyToOne(() => UserDto, (user) => user.sale)
   user: UserDto;
 
-  @OneToOne(() => CustomerDto)
-  @JoinColumn()
+  @ApiProperty({ required: false, type: () => CustomerDto })
+  @ManyToOne(() => CustomerDto, (customer) => customer.sale)
   customer: CustomerDto;
 
   @ApiProperty({ required: false, type: () => SaleOrderDto })
   @OneToMany(() => SaleOrderDto, (saleOrder) => saleOrder.invoice)
-  @JoinColumn({ name: 'saleOrderID' })
   saleOrder: SaleOrderDto[];
 }

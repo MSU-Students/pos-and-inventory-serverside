@@ -15,9 +15,9 @@ import { ExpensesDto } from './entities/expenses.dto';
 import { PurchaseDto } from './entities/purchase.dto';
 import { PurchaseService } from './purchase/purchase.service';
 import { PurchaseController } from './purchase/purchase.controller';
-import { SellRecordService } from './sale-record/sell-record.service';
-import { SellRecordController } from './sale-record/sell-record.controller';
-import { SellRecordDto } from './entities/sell-record.dto';
+import { SaleRecordService } from './sale-record/sale-record.service';
+import { SaleRecordController } from './sale-record/sale-record.controller';
+import { SaleRecordDto } from './entities/sale-record.dto';
 import { AuthModule } from './user/auth.module';
 import { UserDto, UserController, UserService } from './user';
 import { MediaService } from './media/media.service';
@@ -38,7 +38,7 @@ import { SaleOrderService } from './sale-order/sale-order.service';
       ManageProductDto,
       ExpensesDto,
       PurchaseDto,
-      SellRecordDto,
+      SaleRecordDto,
       MediaDto,
       SaleOrderDto,
       CustomerDto,
@@ -56,14 +56,14 @@ import { SaleOrderService } from './sale-order/sale-order.service';
         ManageProductDto,
         ExpensesDto,
         PurchaseDto,
-        SellRecordDto,
+        SaleRecordDto,
         UserDto,
         MediaDto,
         SaleOrderDto,
         CustomerDto,
       ],
-      synchronize: true,
-      dropSchema: true,
+      // synchronize: true,
+      // dropSchema: true,
     }),
     AuthModule,
   ],
@@ -74,7 +74,7 @@ import { SaleOrderService } from './sale-order/sale-order.service';
     InventoryController,
     ExpensesController,
     PurchaseController,
-    SellRecordController,
+    SaleRecordController,
     MediaController,
     CustomerController,
     SaleOrderController,
@@ -86,7 +86,7 @@ import { SaleOrderService } from './sale-order/sale-order.service';
     InventoryService,
     ExpensesService,
     PurchaseService,
-    SellRecordService,
+    SaleRecordService,
     MediaService,
     CustomerService,
     SaleOrderService,

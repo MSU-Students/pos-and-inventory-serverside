@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { InventoryDto } from '../entities/inventory.dto';
 
 @Injectable()
@@ -18,8 +18,7 @@ export class InventoryService {
   }
   async filterItem(keyword: string): Promise<InventoryDto[]> {
     return this.inventoryRepository.find({
-      relations: ['inventoryCat'],
-      where: { inventoryCat: { categoryName: keyword } },
+      where: { itemName: Like(`%${keyword}%`) },
     });
   }
   async findOne(itemCode: string): Promise<InventoryDto> {
