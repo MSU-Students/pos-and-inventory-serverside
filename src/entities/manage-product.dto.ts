@@ -46,7 +46,7 @@ export class ManageProductDto implements ManageProduct {
   @Column({ nullable: true })
   productDateCreated: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @Column({ nullable: true })
   url: number;
 }

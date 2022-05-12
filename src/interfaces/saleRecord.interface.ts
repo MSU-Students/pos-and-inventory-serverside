@@ -1,5 +1,6 @@
 export interface SaleRecord {
-  invoiceID?: string;
+  invoiceID?: number;
   sales_order_created: string;
   totalAmount: number;
+  payment: number;
 }

@@ -103,7 +103,6 @@ export class AuthController {
     const user = await this.userService.findOne(req.user.userId);
     return {
       ...user,
-      id: undefined,
       password: undefined,
       refreshToken: undefined,
     };

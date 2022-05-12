@@ -8,36 +8,46 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { SellOrder } from '../interfaces/sell-order.interface';
+import { SaleOrder } from '../interfaces/saleOrder.interface';
 import { ManageProductDto } from './manage-product.dto';
 import { SaleRecordDto } from './sale-record.dto';
 
 @Entity('Sale_Order')
-export class SaleOrderDto implements SellOrder {
+export class SaleOrderDto implements SaleOrder {
+  @ApiProperty({ required: false })
   @PrimaryGeneratedColumn()
-  sale_id: number;
-
-  @ApiProperty({ example: '2' })
-  @Column({ type: 'integer' })
-  quantity: number;
-
-  @ApiProperty({ example: '2' })
-  @Column({ type: 'float' })
-  price: number;
+  order_ID?: number;
 
   @ApiProperty({ example: 'Regular' })
   @Column()
-  size: string;
+  orderName: string;
 
-  @ApiProperty()
-  @Column({})
-  category: string;
+  @ApiProperty({ example: '2' })
+  @Column({ type: 'integer' })
+  orderQuant: number;
 
-  @ApiProperty()
-  @Column({})
-  subCategory: string;
+  @ApiProperty({ example: '2' })
+  @Column({ type: 'double' })
+  orderPrice: number;
 
-  @ManyToOne(() => SaleRecordDto, (invoice) => invoice.saleOrder)
+  @ApiProperty({ example: 'Regular' })
+  @Column()
+  orderSize: string;
+
+  @ApiProperty({ required: false })
+  @Column({ nullable: true })
+  orderCategory: string;
+
+  @ApiProperty({ required: false })
+  @Column({ nullable: true })
+  orderSubCategory: string;
+
+  @ApiProperty({ example: '2' })
+  @Column({ type: 'double' })
+  orderSubTotal: number;
+
+  @ApiProperty({ required: false, type: () => SaleRecordDto })
+  @ManyToOne(() => SaleRecordDto, (invoice) => invoice.saleOrder, {})
   invoice: SaleRecordDto;
 
   @ManyToMany(() => ManageProductDto)

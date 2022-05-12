@@ -5,8 +5,9 @@ import { SaleRecordDto } from './sale-record.dto';
 
 @Entity('Customer')
 export class CustomerDto implements Customer {
+  @ApiProperty({ required: false })
   @PrimaryGeneratedColumn()
-  id?: number;
+  customerID?: number;
 
   @ApiProperty({ default: 'Sam' })
   @Column()

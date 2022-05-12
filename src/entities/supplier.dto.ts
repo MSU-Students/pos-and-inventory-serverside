@@ -37,6 +37,10 @@ export class SupplierDto implements Supplier {
 
   @OneToMany(() => PurchaseDto, (purchase) => purchase.supplierPurchase, {
     nullable: true,
+    eager: true,
+    cascade: true,
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
   })
   purchase: PurchaseDto[];
 }
