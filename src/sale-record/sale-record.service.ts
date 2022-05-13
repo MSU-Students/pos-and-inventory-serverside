@@ -15,7 +15,7 @@ export class SaleRecordService {
   }
   async findAll(): Promise<SaleRecordDto[]> {
     return this.SaleRecordRepository.find({
-      relations: ['user', 'customer'],
+      relations: ['user', 'customer', 'saleOrder'],
     });
   }
   async findOne(invoiceID: number): Promise<SaleRecordDto> {
