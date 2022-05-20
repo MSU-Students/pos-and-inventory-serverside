@@ -16,11 +16,11 @@ export class InventoryDto implements Inventory {
   @Column({ type: 'int' })
   itemQuantProd: number;
 
-  @ApiProperty({ example: '23', required: false })
+  @ApiProperty({ example: '23' })
   @Column({ type: 'int' })
   itemQuantStatus: number;
 
-  @ApiProperty({ example: 'Available', required: false })
+  @ApiProperty({ example: 'Available' })
   @Column({ nullable: false })
   itemStatus: string;
 

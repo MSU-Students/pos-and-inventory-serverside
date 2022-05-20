@@ -35,12 +35,6 @@ export class SupplierDto implements Supplier {
   })
   expenses: ExpensesDto[];
 
-  @OneToMany(() => PurchaseDto, (purchase) => purchase.supplierPurchase, {
-    nullable: true,
-    eager: true,
-    cascade: true,
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
-  })
+  @OneToMany(() => PurchaseDto, (purchase) => purchase.supplierPurchase, {})
   purchase: PurchaseDto[];
 }

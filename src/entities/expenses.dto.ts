@@ -21,7 +21,7 @@ export class ExpensesDto implements Expenses {
   @Column({ length: 100, nullable: true })
   description: string;
 
-  @ApiProperty({ example: '7000', required: false })
+  @ApiProperty({ example: '7000' })
   @Column({ type: 'double' })
   amount: number;
 
