@@ -5,7 +5,6 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
-  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { SaleOrder } from '../interfaces/saleOrder.interface';

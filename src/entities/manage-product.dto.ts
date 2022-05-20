@@ -1,16 +1,6 @@
-import {
-  Column,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { ManageProduct } from '../interfaces/manage-product.interface';
-import { SaleRecordDto } from './sale-record.dto';
-import { MediaDto } from './media.dto';
 
 @Entity('Manage_Product')
 export class ManageProductDto implements ManageProduct {
