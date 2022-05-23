@@ -17,7 +17,12 @@ import {
   ApiParam,
   ApiResponse,
 } from '@nestjs/swagger';
-import { LoginUserDto, RefreshDto, AccessTokenDto } from './user.dto';
+import {
+  LoginUserDto,
+  RefreshDto,
+  AccessTokenDto,
+  ChangePasswordDto,
+} from './user.dto';
 import { UserDto } from './user.entity';
 
 @Controller('auth')
@@ -78,6 +83,21 @@ export class AuthController {
   async refreshToken(@Request() req) {
     const accessToken = this.authService.getAccessToken(req.user);
     return { accessToken };
+  }
+
+  @ApiOperation({
+    summary: 'Change the password',
+    operationId: 'changePassword',
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @ApiBody({
+    type: ChangePasswordDto,
+  })
+  @Post('changepassword')
+  async changePassword(@Request() req, @Body() info: ChangePasswordDto) {
+    const user = await this.userService.findOne(req.user.id);
+    return this.authService.changePassword(user, info);
   }
 
   @ApiOperation({

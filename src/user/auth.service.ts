@@ -5,6 +5,7 @@ import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { Users } from '../interfaces/users.interface';
 import { UserDto } from './user.entity';
+import { ChangePasswordDto } from './user.dto';
 
 @Injectable()
 export class AuthService {
@@ -64,18 +65,18 @@ export class AuthService {
     return await this.userService.create(user);
   }
 
-  // async updateRegister(id: number, user: UserDto) {
-  //   const hashedPassword = await bcrypt.hash(user.password, 10);
-  //   user.password = hashedPassword;
-  //   user.username = user.username.toLowerCase();
-  //   user.FName = user.FName;
-  //   user.MName = user.MName;
-  //   user.LName = user.LName;
-  //   user.type = user.type;
-  //   user.contact = user.contact;
-  //   user.email = user.email;
-  //   return await this.userService.update(id, user);
-  // }
+  async changePassword(user: UserDto, info: ChangePasswordDto) {
+    const passwordMatched =
+      user && (await bcrypt.compare(info.oldPassword, user.password));
+    console.log('passwordMatched', passwordMatched);
+    if (!passwordMatched) {
+      throw new HttpException('Bad Old Password', HttpStatus.BAD_REQUEST);
+    }
+    const newPassword = await bcrypt.hash(info.newPassword, 10);
+    const newUserInfo = { ...user, password: newPassword } as UserDto;
+    console.log('newUserInfo', newUserInfo);
+    return this.userService.update(user.id, newUserInfo);
+  }
 
   async setCurrentRefreshToken(refreshToken: string, userId: number) {
     const currentHashedRefreshToken = await bcrypt.hash(refreshToken, 10);
