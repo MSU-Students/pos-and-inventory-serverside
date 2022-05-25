@@ -13,7 +13,7 @@ export class PurchaseDto implements Purchase {
   @Column({ length: 100 })
   purchaseProduct: string;
 
-  @ApiProperty({ required: false })
+  @ApiProperty()
   @Column({ nullable: true })
   purchaseDate: string;
 
