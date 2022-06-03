@@ -36,7 +36,7 @@ export class ManageProductController {
   @ApiOperation({ summary: 'Get Product by id', operationId: 'GetProduct' })
   @ApiResponse({ status: 200, type: ManageProductDto })
   @Get(':product_ID')
-  async findOne(@Param('product_ID') id: string): Promise<ManageProductDto> {
+  async findOne(@Param('product_ID') id: number): Promise<ManageProductDto> {
     return this.manageProductService.findOne(id);
   }
   @ApiOperation({
@@ -45,7 +45,7 @@ export class ManageProductController {
   })
   @ApiResponse({ status: 200, type: ManageProductDto })
   @Put(':product_ID')
-  async update(@Param('product_ID') id: string, @Body() job: ManageProductDto) {
+  async update(@Param('product_ID') id: number, @Body() job: ManageProductDto) {
     return this.manageProductService.update(id, job);
   }
 
@@ -55,7 +55,7 @@ export class ManageProductController {
   })
   @ApiResponse({ status: 200, type: ManageProductDto })
   @Delete(':product_ID')
-  async delete(@Param('product_ID') id: string) {
+  async delete(@Param('product_ID') id: number) {
     return this.manageProductService.deleteOne(id);
   }
 }

@@ -1,5 +1,5 @@
 export interface ManageProduct {
-  product_ID?: string;
+  product_ID?: number;
   productName: string;
   productSize: string;
   productPrice: number;

@@ -16,13 +16,13 @@ export class ManageProductService {
   async findAll(): Promise<ManageProductDto[]> {
     return this.manageProductRepository.find();
   }
-  async findOne(product_ID: string): Promise<ManageProductDto> {
+  async findOne(product_ID: number): Promise<ManageProductDto> {
     return this.manageProductRepository.findOne(product_ID);
   }
-  async update(product_ID: string, application: ManageProductDto) {
+  async update(product_ID: number, application: ManageProductDto) {
     return this.manageProductRepository.update(product_ID, application);
   }
-  async deleteOne(product_ID: string) {
+  async deleteOne(product_ID: number) {
     return this.manageProductRepository.delete(product_ID);
   }
 }

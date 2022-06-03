@@ -5,8 +5,8 @@ import { ManageProduct } from '../interfaces/manage-product.interface';
 @Entity('Manage_Product')
 export class ManageProductDto implements ManageProduct {
   @ApiProperty({ required: false })
-  @PrimaryGeneratedColumn('uuid')
-  product_ID?: string;
+  @PrimaryGeneratedColumn()
+  product_ID?: number;
 
   @ApiProperty({ example: 'Black Forest' })
   @Column({ length: 100 })
