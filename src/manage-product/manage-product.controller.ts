@@ -27,7 +27,7 @@ export class ManageProductController {
   }
 
   @ApiOperation({ summary: 'Get all Product', operationId: 'GetProducts' })
-  @ApiResponse({ status: 200, type: ManageProductDto[] })
+  @ApiResponse({ status: 200, type: [ManageProductDto] })
   @Get()
   async findAll(): Promise<ManageProductDto[]> {
     return this.manageProductService.findAll();
