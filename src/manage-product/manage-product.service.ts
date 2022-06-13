@@ -25,4 +25,6 @@ export class ManageProductService {
   async deleteOne(product_ID: number) {
     return this.manageProductRepository.delete(product_ID);
   }
+
+
 }

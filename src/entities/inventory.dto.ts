@@ -12,7 +12,7 @@ export class InventoryDto implements Inventory {
   @Column({ length: 100 })
   itemName: string;
 
-  @ApiProperty({ example: '23', required: false })
+  @ApiProperty({ example: '23' })
   @Column({ type: 'int' })
   itemQuantProd: number;
 
@@ -24,15 +24,15 @@ export class InventoryDto implements Inventory {
   @Column({ nullable: false })
   itemStatus: string;
 
-  @ApiProperty({ example: 'Kilogram (kg)', required: false })
+  @ApiProperty({ example: 'Kilogram (kg)' })
   @Column({ length: 100 })
   itemUnitProd: string;
 
-  @ApiProperty({ example: '02/16/2023', required: false })
+  @ApiProperty({ example: '02/16/2023' })
   @Column({ length: 100, nullable: true })
   itemExpiryDate: string;
 
-  @ApiProperty({ example: 'Utensil', required: false })
+  @ApiProperty({ example: 'Utensil' })
   @Column({ nullable: true })
   itemCategory: string;
 

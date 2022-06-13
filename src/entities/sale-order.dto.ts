@@ -48,8 +48,4 @@ export class SaleOrderDto implements SaleOrder {
   @ApiProperty({ required: false, type: () => SaleRecordDto })
   @ManyToOne(() => SaleRecordDto, (invoice) => invoice.saleOrder, {})
   invoice: SaleRecordDto;
-
-  @ManyToMany(() => ManageProductDto)
-  @JoinTable()
-  products: ManageProductDto[];
 }
