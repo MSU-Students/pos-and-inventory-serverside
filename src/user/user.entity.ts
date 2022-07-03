@@ -29,7 +29,7 @@ export class UserDto implements Users {
   @Column({ length: 100, nullable: true })
   email?: string;
 
-  @ApiProperty({ default: 'admin' })
+  @ApiProperty({ default: 'Admin' })
   @Column({ length: 100 })
   type: 'admin' | 'cashier';
 

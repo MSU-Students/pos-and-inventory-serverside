@@ -29,6 +29,10 @@ export class SaleRecordDto implements SaleRecord {
   @Column({ type: 'double' })
   payment: number;
 
+  @ApiProperty({ example: '150' })
+  @Column({ type: 'double' })
+  totalSale: number;
+
   @ApiProperty({ required: false, type: () => UserDto })
   @ManyToOne(() => UserDto, (user) => user.sale, {
     nullable: true,
@@ -38,20 +42,12 @@ export class SaleRecordDto implements SaleRecord {
   @ApiProperty({ required: false, type: () => CustomerDto })
   @ManyToOne(() => CustomerDto, (customer) => customer.sale, {
     nullable: true,
-    eager: true,
-    cascade: true,
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
   })
   customer: CustomerDto;
 
   @ApiProperty({ required: false, type: () => SaleOrderDto })
   @OneToMany(() => SaleOrderDto, (saleOrder) => saleOrder.invoice, {
     nullable: true,
-    eager: true,
-    cascade: true,
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
   })
   saleOrder: SaleOrderDto[];
 }

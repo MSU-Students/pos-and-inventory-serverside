@@ -96,7 +96,7 @@ export class AuthController {
   })
   @Post('changepassword')
   async changePassword(@Request() req, @Body() info: ChangePasswordDto) {
-    const user = await this.userService.findOne(req.user.id);
+    const user = await this.userService.findOne(req.user.userId);
     return this.authService.changePassword(user, info);
   }
 

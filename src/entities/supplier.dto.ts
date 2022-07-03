@@ -30,6 +30,10 @@ export class SupplierDto implements Supplier {
   @Column({ length: 100, nullable: true })
   address: string;
 
+  @ApiProperty({ example: 'Dimaluna, Marawi City', required: false })
+  @Column({ nullable: true })
+  offeredItem: string;
+
   @OneToMany(() => ExpensesDto, (expenses) => expenses.supplier, {
     nullable: true,
   })

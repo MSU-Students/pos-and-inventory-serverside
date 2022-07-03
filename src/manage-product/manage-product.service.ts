@@ -14,7 +14,9 @@ export class ManageProductService {
     return this.manageProductRepository.save(application);
   }
   async findAll(): Promise<ManageProductDto[]> {
-    return this.manageProductRepository.find();
+    return this.manageProductRepository.find({
+      relations: [],
+    });
   }
   async findOne(product_ID: number): Promise<ManageProductDto> {
     return this.manageProductRepository.findOne(product_ID);
@@ -25,6 +27,4 @@ export class ManageProductService {
   async deleteOne(product_ID: number) {
     return this.manageProductRepository.delete(product_ID);
   }
-
-
 }

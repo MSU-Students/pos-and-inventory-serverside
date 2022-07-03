@@ -68,13 +68,13 @@ export class AuthService {
   async changePassword(user: UserDto, info: ChangePasswordDto) {
     const passwordMatched =
       user && (await bcrypt.compare(info.oldPassword, user.password));
-    console.log('passwordMatched', passwordMatched);
+
     if (!passwordMatched) {
       throw new HttpException('Bad Old Password', HttpStatus.BAD_REQUEST);
     }
     const newPassword = await bcrypt.hash(info.newPassword, 10);
     const newUserInfo = { ...user, password: newPassword } as UserDto;
-    console.log('newUserInfo', newUserInfo);
+
     return this.userService.update(user.id, newUserInfo);
   }
 

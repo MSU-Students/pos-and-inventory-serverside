@@ -1,4 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
 import { ManageProduct } from '../interfaces/manage-product.interface';
 
@@ -16,8 +22,8 @@ export class ManageProductDto implements ManageProduct {
   @Column({ length: 100 })
   productSize: string;
 
-  @ApiProperty({ example: '150' })
-  @Column({ type: 'double' })
+  @ApiProperty({ example: '120' })
+  @Column({ type: 'float' })
   productPrice: number;
 
   @ApiProperty({ example: 'Drinks' })
@@ -35,6 +41,10 @@ export class ManageProductDto implements ManageProduct {
   @ApiProperty()
   @Column({ nullable: true })
   productDateCreated: string;
+
+  @ApiProperty()
+  @Column({ nullable: true })
+  productLastEdited: string;
 
   @ApiProperty({ required: false })
   @Column({ nullable: true })
